@@ -1,30 +1,72 @@
-# New Project
+# Spotify Redesign
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+A modern redesign of the Spotify web application with real Spotify API integration.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/steven-kingoro-wanjalas-projects/v0-new-project-8okwpferyb2)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/8okwPfErYb2)
+## Features
 
-## Overview
+- Real Spotify API integration
+- OAuth authentication
+- Mood-based UI themes
+- Responsive design
+- Playlist browsing
+- User profile
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## Setup
+
+### Prerequisites
+
+- Node.js 18+ and npm
+- A Spotify Developer account
+
+### Spotify API Setup
+
+1. Go to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/)
+2. Create a new application
+3. Set the Redirect URI to `http://localhost:3000/callback`
+4. Note your Client ID and Client Secret
+
+### Environment Variables
+
+1. Copy `.env.local.example` to `.env.local`
+2. Fill in your Spotify API credentials:
+   \`\`\`
+   SPOTIFY_CLIENT_ID=your_client_id_here
+   SPOTIFY_CLIENT_SECRET=your_client_secret_here
+   SPOTIFY_REDIRECT_URI=http://localhost:3000/callback
+   NEXT_PUBLIC_SPOTIFY_CLIENT_ID=your_client_id_here
+   NEXT_PUBLIC_SPOTIFY_REDIRECT_URI=http://localhost:3000/callback
+   \`\`\`
+
+### Installation
+
+\`\`\`bash
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
+\`\`\`
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Deployment
 
-Your project is live at:
+This project can be deployed on Vercel:
 
-**[https://vercel.com/steven-kingoro-wanjalas-projects/v0-new-project-8okwpferyb2](https://vercel.com/steven-kingoro-wanjalas-projects/v0-new-project-8okwpferyb2)**
+1. Push your code to GitHub
+2. Import the repository in Vercel
+3. Set the environment variables in the Vercel dashboard
+4. Deploy
 
-## Build your app
+## Technologies Used
 
-Continue building your app on:
+- Next.js 14
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Spotify Web API
 
-**[https://v0.dev/chat/projects/8okwPfErYb2](https://v0.dev/chat/projects/8okwPfErYb2)**
+## License
 
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+MIT
