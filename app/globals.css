@@ -109,44 +109,59 @@
 
 /* Custom gradient text utility classes */
 .gradient-text-energetic {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#FF4081] to-[#FF9B3D];
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #ff4081, #ff9b3d);
 }
 
 .gradient-text-chill {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#0DCCFF] to-[#1ED760];
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #0dccff, #1ed760);
 }
 
 .gradient-text-focus {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#9C42F5] to-[#0DCCFF];
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #9c42f5, #0dccff);
 }
 
 .gradient-text-nostalgic {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#FF6437] to-[#9C42F5];
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #ff6437, #9c42f5);
 }
 
 .gradient-text-melancholy {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#5E81AC] to-[#81A1C1];
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #5e81ac, #81a1c1);
 }
 
 /* Custom gradient background utility classes */
 .bg-gradient-energetic {
-  @apply bg-gradient-to-r from-[#FF4081] to-[#FF9B3D];
+  background-image: linear-gradient(to right, #ff4081, #ff9b3d);
 }
 
 .bg-gradient-chill {
-  @apply bg-gradient-to-r from-[#0DCCFF] to-[#1ED760];
+  background-image: linear-gradient(to right, #0dccff, #1ed760);
 }
 
 .bg-gradient-focus {
-  @apply bg-gradient-to-r from-[#9C42F5] to-[#0DCCFF];
+  background-image: linear-gradient(to right, #9c42f5, #0dccff);
 }
 
 .bg-gradient-nostalgic {
-  @apply bg-gradient-to-r from-[#FF6437] to-[#9C42F5];
+  background-image: linear-gradient(to right, #ff6437, #9c42f5);
 }
 
 .bg-gradient-melancholy {
-  @apply bg-gradient-to-r from-[#5E81AC] to-[#81A1C1];
+  background-image: linear-gradient(to right, #5e81ac, #81a1c1);
 }
 
 /* Audio visualizer animation classes */
