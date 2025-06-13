@@ -20,6 +20,7 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
+  // Update the handleSubmit function to better handle errors
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
@@ -31,7 +32,8 @@ export default function LoginPage() {
       router.push("/")
     } catch (error) {
       console.error("Login error:", error)
-      toast.error("Login failed. Please use demo@example.com / password")
+      // Provide more helpful error message
+      toast.error("Login failed. Please use demo@example.com / password or any credentials for demo purposes")
     } finally {
       setIsLoading(false)
     }
