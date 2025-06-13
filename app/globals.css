@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 142 70% 45%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 12 7% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 142 72% 29%;
+
+    --radius: 0.5rem;
+  }
+
+  /* Mood-specific theme variables */
+  .theme-energetic {
+    --primary: 339 100% 63%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 29 100% 62%;
+    --secondary-foreground: 0 0% 9%;
+    --accent: 48 100% 62%;
+    --background: 324 35% 13%;
+    --muted: 324 20% 20%;
+    --muted-foreground: 0 0% 80%;
+    --border: 324 20% 25%;
+  }
+
+  .theme-chill {
+    --primary: 195 100% 53%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 142 70% 45%;
+    --secondary-foreground: 0 0% 9%;
+    --accent: 190 100% 65%;
+    --background: 200 60% 14%;
+    --muted: 200 30% 20%;
+    --muted-foreground: 0 0% 80%;
+    --border: 200 30% 25%;
+  }
+
+  .theme-focus {
+    --primary: 267 89% 61%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 195 100% 53%;
+    --secondary-foreground: 0 0% 9%;
+    --accent: 255 100% 77%;
+    --background: 260 52% 13%;
+    --muted: 260 30% 20%;
+    --muted-foreground: 0 0% 80%;
+    --border: 260 30% 25%;
+  }
+
+  .theme-nostalgic {
+    --primary: 14 100% 61%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 267 89% 61%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 20 100% 79%;
+    --background: 20 35% 13%;
+    --muted: 20 25% 20%;
+    --muted-foreground: 0 0% 80%;
+    --border: 20 25% 25%;
+  }
+
+  .theme-melancholy {
+    --primary: 213 32% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 33% 63%;
+    --secondary-foreground: 0 0% 9%;
+    --accent: 92 28% 65%;
+    --background: 220 16% 22%;
+    --muted: 220 16% 30%;
+    --muted-foreground: 218 27% 94%;
+    --border: 220 16% 36%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom gradient text utility classes */
+.gradient-text-energetic {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#FF4081] to-[#FF9B3D];
+}
+
+.gradient-text-chill {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#0DCCFF] to-[#1ED760];
+}
+
+.gradient-text-focus {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#9C42F5] to-[#0DCCFF];
+}
+
+.gradient-text-nostalgic {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#FF6437] to-[#9C42F5];
+}
+
+.gradient-text-melancholy {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#5E81AC] to-[#81A1C1];
+}
+
+/* Custom gradient background utility classes */
+.bg-gradient-energetic {
+  @apply bg-gradient-to-r from-[#FF4081] to-[#FF9B3D];
+}
+
+.bg-gradient-chill {
+  @apply bg-gradient-to-r from-[#0DCCFF] to-[#1ED760];
+}
+
+.bg-gradient-focus {
+  @apply bg-gradient-to-r from-[#9C42F5] to-[#0DCCFF];
+}
+
+.bg-gradient-nostalgic {
+  @apply bg-gradient-to-r from-[#FF6437] to-[#9C42F5];
+}
+
+.bg-gradient-melancholy {
+  @apply bg-gradient-to-r from-[#5E81AC] to-[#81A1C1];
+}
+
+/* Audio visualizer animation classes */
+.audio-bar {
+  @apply bg-primary rounded-full w-1 mx-0.5;
+  animation: pulse-wave 1.2s ease-in-out infinite;
+}
+
+.audio-bar:nth-child(1) {
+  animation-delay: 0.0s;
+}
+.audio-bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.audio-bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.audio-bar:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.audio-bar:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.audio-bar:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.audio-bar:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.audio-bar:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.audio-bar:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.audio-bar:nth-child(10) {
+  animation-delay: 0.9s;
+}
