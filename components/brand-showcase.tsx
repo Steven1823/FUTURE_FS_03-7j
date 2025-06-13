@@ -4,7 +4,6 @@ import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 import { ChevronRight, ChevronLeft } from "lucide-react"
-import LogoShowcase from "./brand/logo-showcase"
 import ColorPalette from "./brand/color-palette"
 import Typography from "./brand/typography"
 import Manifesto from "./brand/manifesto"
@@ -70,7 +69,13 @@ export default function BrandShowcase() {
             <Card className="border-zinc-800 bg-zinc-900/50 backdrop-blur-sm">
               <CardContent className="p-6">
                 <TabsContent value="logo" className="mt-0">
-                  <LogoShowcase />
+                  <div className="text-center p-8">
+                    <h2 className="text-3xl font-bold mb-4">Brand Identity</h2>
+                    <p className="text-gray-400 max-w-2xl mx-auto">
+                      A dynamic identity system that responds to sound and movement, creating a personalized experience
+                      for every user.
+                    </p>
+                  </div>
                 </TabsContent>
 
                 <TabsContent value="colors" className="mt-0">

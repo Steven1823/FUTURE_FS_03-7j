@@ -1,14 +1,22 @@
+// Import mock data and auth functions
+import { mockAuth } from "./mock-data"
+
 // This is a placeholder for Firebase configuration
 // In a real implementation, you would initialize Firebase here
-
 export const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "mock-api-key",
+  authDomain: "mock-auth-domain",
+  projectId: "mock-project-id",
+  storageBucket: "mock-storage-bucket",
+  messagingSenderId: "mock-messaging-sender-id",
+  appId: "mock-app-id",
 }
+
+// Export mock auth functions
+export const auth = mockAuth
+
+// Add a note for developers
+console.log("Using mock Firebase implementation. For production, replace with actual Firebase setup.")
 
 // Firebase services setup would go here
 // For example:
