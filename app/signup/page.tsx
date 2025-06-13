@@ -1,8 +1,8 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,6 +10,8 @@ import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Separator } from "@/components/ui/separator"
 import { Facebook } from "lucide-react"
+import { auth } from "@/lib/firebase"
+import { toast } from "sonner"
 
 export default function SignupPage() {
   const [email, setEmail] = useState("")
@@ -20,11 +22,34 @@ export default function SignupPage() {
   const [gender, setGender] = useState("")
   const [marketing, setMarketing] = useState(false)
   const [terms, setTerms] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would integrate with Firebase Authentication
-    console.log("Sign up with:", { email, password, name, birthDate, gender })
+
+    if (email !== confirmEmail) {
+      toast.error("Emails don't match")
+      return
+    }
+
+    setIsLoading(true)
+
+    try {
+      // Use our mock auth service
+      await auth.signUp(email, password, name)
+      toast.success("Account created successfully!")
+      router.push("/")
+    } catch (error) {
+      console.error("Signup error:", error)
+      toast.error("Failed to create account")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleSocialSignup = (provider: string) => {
+    toast.info(`${provider} signup is not implemented in this demo`)
   }
 
   const months = [
@@ -55,7 +80,11 @@ export default function SignupPage() {
           <h2 className="mt-6 text-3xl font-bold">Sign up for free to start listening</h2>
         </div>
 
-        <Button variant="outline" className="w-full flex items-center justify-center gap-2 h-12 border-2">
+        <Button
+          variant="outline"
+          className="w-full flex items-center justify-center gap-2 h-12 border-2"
+          onClick={() => handleSocialSignup("Facebook")}
+        >
           <Facebook className="h-5 w-5" />
           <span>Sign up with Facebook</span>
         </Button>
@@ -261,8 +290,8 @@ export default function SignupPage() {
             </div>
           </div>
 
-          <Button type="submit" className="w-full">
-            Sign Up
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading ? "Creating Account..." : "Sign Up"}
           </Button>
 
           <div className="text-center">

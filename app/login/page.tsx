@@ -1,8 +1,8 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,16 +10,35 @@ import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Separator } from "@/components/ui/separator"
 import { Facebook, Apple } from "lucide-react"
+import { auth } from "@/lib/firebase"
+import { toast } from "sonner"
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("demo@example.com")
+  const [password, setPassword] = useState("password")
   const [rememberMe, setRememberMe] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would integrate with Firebase Authentication
-    console.log("Login with:", { email, password, rememberMe })
+    setIsLoading(true)
+
+    try {
+      // Use our mock auth service
+      await auth.signIn(email, password)
+      toast.success("Logged in successfully!")
+      router.push("/")
+    } catch (error) {
+      console.error("Login error:", error)
+      toast.error("Login failed. Please use demo@example.com / password")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleSocialLogin = (provider: string) => {
+    toast.info(`${provider} login is not implemented in this demo`)
   }
 
   return (
@@ -33,20 +52,33 @@ export default function LoginPage() {
             </svg>
           </Link>
           <h2 className="mt-6 text-3xl font-bold">Log in to Spotify</h2>
+          <p className="mt-2 text-sm text-muted-foreground">Demo credentials: demo@example.com / password</p>
         </div>
 
         <div className="mt-8 space-y-4">
-          <Button variant="outline" className="w-full flex items-center justify-center gap-2 h-12 border-2">
+          <Button
+            variant="outline"
+            className="w-full flex items-center justify-center gap-2 h-12 border-2"
+            onClick={() => handleSocialLogin("Facebook")}
+          >
             <Facebook className="h-5 w-5" />
             <span>Continue with Facebook</span>
           </Button>
 
-          <Button variant="outline" className="w-full flex items-center justify-center gap-2 h-12 border-2">
+          <Button
+            variant="outline"
+            className="w-full flex items-center justify-center gap-2 h-12 border-2"
+            onClick={() => handleSocialLogin("Apple")}
+          >
             <Apple className="h-5 w-5" />
             <span>Continue with Apple</span>
           </Button>
 
-          <Button variant="outline" className="w-full flex items-center justify-center gap-2 h-12 border-2">
+          <Button
+            variant="outline"
+            className="w-full flex items-center justify-center gap-2 h-12 border-2"
+            onClick={() => handleSocialLogin("Google")}
+          >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -121,8 +153,8 @@ export default function LoginPage() {
               </Link>
             </div>
 
-            <Button type="submit" className="w-full">
-              Log In
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Logging in..." : "Log In"}
             </Button>
           </form>
 
